@@ -373,25 +373,29 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  gap: 20px;
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px clamp(14px, 2vw, 28px);
+  gap: 12px;
 }
 
 /* Logo Treatment */
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo-symbol {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   background: var(--navy-850);
   border: 1.5px solid var(--gold-500);
-  border-radius: 10px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,11 +416,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-name {
   font-family: var(--font-primary);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: var(--white);
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .brand-name span {
@@ -424,29 +429,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-tagline {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--slate-400);
   margin-top: 2px;
+  white-space: nowrap;
 }
 
 /* Nav Menu */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
+  flex-shrink: 1;
 }
 
 .nav-link {
   color: var(--slate-200);
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 6px 9px;
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -457,15 +465,15 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link.active {
   color: var(--gold-400);
   font-weight: 600;
-  background: rgba(197, 164, 103, 0.1);
+  background: rgba(197, 164, 103, 0.12);
 }
 
 .nav-link.active::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 12px;
-  right: 12px;
+  left: 8px;
+  right: 8px;
   height: 2px;
   background: var(--gold-gradient);
   border-radius: 2px;
@@ -475,21 +483,23 @@ h1, h2, h3, h4, h5, h6 {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .phone-quick-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   color: var(--white);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .phone-quick-link:hover {
@@ -497,14 +507,29 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--gold-400);
 }
 
+.header-actions .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.84rem;
+  padding: 8px 16px;
+}
+
 .mobile-nav-toggle {
   display: none;
-  background: none;
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--white);
-  padding: 8px 10px;
+  padding: 7px 9px;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.mobile-nav-toggle:hover {
+  border-color: var(--gold-400);
+  background: rgba(197, 164, 103, 0.15);
 }
 
 /* --- Hero Slideshow Section --- */
@@ -1677,19 +1702,426 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(0);
 }
 
-/* Mobile Sticky Action Bar */
+/* =============================================================
+   MOBILE LEAD GENERATION ENGINE (High-Converting Architecture)
+   ============================================================= */
+
+/* 1. Mobile Sticky Bottom Action Bar */
 .mobile-sticky-action-bar {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 990;
-  background: rgba(8, 18, 36, 0.98);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(197, 164, 103, 0.25);
-  padding: 10px 16px;
-  gap: 12px;
+  z-index: 1050;
+  background: rgba(4, 9, 19, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1.5px solid var(--gold-500);
+  box-shadow: 0 -8px 26px rgba(0, 0, 0, 0.55);
+  padding: 8px 10px;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.mobile-lead-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.mobile-lead-btn svg {
+  flex-shrink: 0;
+}
+
+.lead-btn-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.15;
+}
+
+.lead-btn-main {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.lead-btn-sub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+/* Call Button (Navy / Gold Rim with pulsing live status) */
+.mobile-call-btn {
+  background: linear-gradient(135deg, var(--navy-800), var(--navy-900));
+  color: var(--white);
+  border-color: rgba(197, 164, 103, 0.35);
+}
+
+.mobile-call-btn:active {
+  background: var(--navy-850);
+  border-color: var(--gold-400);
+}
+
+.lead-pulse-indicator {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  background: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseGreen 1.8s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* WhatsApp Button (WhatsApp Green Gradient) */
+.mobile-wa-btn {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: var(--white);
+  border-color: rgba(37, 211, 102, 0.4);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  flex: 1.08;
+}
+
+.mobile-wa-btn:active {
+  filter: brightness(0.92);
+}
+
+/* Quote / Callback Button (Champagne Gold) */
+.mobile-quote-btn {
+  background: var(--gold-gradient);
+  color: var(--navy-950);
+  border-color: var(--gold-400);
+  box-shadow: 0 4px 12px rgba(197, 164, 103, 0.25);
+}
+
+.mobile-quote-btn .lead-btn-main {
+  color: var(--navy-950);
+}
+
+.mobile-quote-btn .lead-btn-sub {
+  color: var(--navy-900);
+  font-weight: 600;
+}
+
+/* 2. Mobile Hero Quick Lead Card */
+.mobile-hero-lead-card {
+  background: rgba(8, 18, 36, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(197, 164, 103, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(197, 164, 103, 0.12);
+  margin-top: 28px;
+  max-width: 580px;
+  width: 100%;
+}
+
+.hero-lead-head {
+  margin-bottom: 16px;
+}
+
+.lead-live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34D399;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.lead-live-chip .pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: pulseGreen 1.5s infinite;
+}
+
+.hero-lead-title {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.hero-lead-desc {
+  font-size: 0.84rem;
+  color: var(--slate-300);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.lead-cat-pills {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.lead-cat-pill {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+
+.lead-cat-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.lead-cat-pill span {
+  display: block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 8px 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--slate-200);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.lead-cat-pill input[type="radio"]:checked + span,
+.lead-cat-pill.active span {
+  background: rgba(197, 164, 103, 0.18);
+  border-color: var(--gold-400);
+  color: var(--gold-400);
+  box-shadow: 0 0 12px rgba(197, 164, 103, 0.2);
+}
+
+.lead-form-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.lead-phone-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(4, 9, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.lead-phone-wrapper:focus-within {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 0 2px rgba(197, 164, 103, 0.25);
+}
+
+.flag-prefix {
+  padding-left: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold-400);
+  white-space: nowrap;
+}
+
+.lead-phone-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 12px 10px 8px;
+  color: var(--white);
+  font-size: 0.92rem;
+  font-family: var(--font-primary);
+}
+
+.lead-phone-input::placeholder {
+  color: var(--slate-400);
+  font-size: 0.82rem;
+}
+
+.lead-submit-action {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 10px 18px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-lead-micro-proof {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  color: var(--slate-400);
+}
+
+/* 3. In-Content Mobile Lead Strip (For all 10 pages) */
+.mobile-lead-strip {
+  background: linear-gradient(135deg, rgba(8, 18, 36, 0.95), rgba(4, 9, 19, 0.98));
+  border: 1.5px solid rgba(197, 164, 103, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  margin: 40px auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.mobile-lead-strip-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 260px;
+}
+
+.strip-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(197, 164, 103, 0.15);
+  border: 1px solid var(--gold-500);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--gold-400);
+  flex-shrink: 0;
+}
+
+.strip-text h4 {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.strip-text p {
+  font-size: 0.86rem;
+  color: var(--slate-300);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.strip-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.strip-actions .btn {
+  padding: 9px 18px;
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+/* 4. Mobile Drawer Lead Desk (Inside slide-out navigation) */
+.mobile-drawer-lead-desk {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 164, 103, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.drawer-lead-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34D399;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.drawer-lead-badge .pulse-dot {
+  width: 5px;
+  height: 5px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: pulseGreen 1.5s infinite;
+}
+
+.drawer-lead-title {
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.drawer-lead-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mobile-drawer-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-compliance-note {
+  font-size: 0.7rem;
+  color: var(--slate-400);
+  text-align: center;
+  margin: 0;
 }
 
 /* --- Consultation Modal --- */
@@ -1947,7 +2379,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --- Responsive Media Queries --- */
-@media (max-width: 1080px) {
+
+/* Laptops & Desktops: Hide redundant header phone box to provide maximum space for nav & CTA */
+@media (max-width: 1360px) {
+  .header-actions .phone-quick-link {
+    display: none;
+  }
+}
+
+/* Tablets & Small Laptops: Collapse nav menu to hamburger toggle */
+@media (max-width: 1140px) {
   .nav-menu {
     display: none;
   }
@@ -1969,6 +2410,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Mobile Devices: Full Lead-Capture Engine Active */
 @media (max-width: 768px) {
   .top-bar {
     display: none;
@@ -1976,12 +2418,16 @@ h1, h2, h3, h4, h5, h6 {
   .header-actions .phone-quick-link {
     display: none;
   }
+  .header-actions .btn {
+    font-size: 0.8rem;
+    padding: 7px 12px;
+  }
   .hero-slider-section {
     min-height: 75vh;
   }
   .hero-content-container {
-    padding-top: 60px;
-    padding-bottom: 80px;
+    padding-top: 50px;
+    padding-bottom: 70px;
   }
   .floating-trust-bar {
     margin-top: -30px;
@@ -2016,20 +2462,89 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
   .contact-card-form {
-    padding: 24px;
+    padding: 22px 18px;
   }
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  
+  /* Sticky Lead Conversion Bar */
   .mobile-sticky-action-bar {
     display: flex;
   }
   body {
-    padding-bottom: 60px;
+    padding-bottom: 72px;
   }
   .floating-whatsapp-btn {
-    bottom: 74px;
-    right: 18px;
+    bottom: 76px;
+    right: 14px;
+    width: 48px;
+    height: 48px;
+  }
+  .floating-whatsapp-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Mobile In-Content Lead Strip */
+  .mobile-lead-strip {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 20px 16px;
+  }
+  .mobile-lead-strip-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .strip-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  .strip-actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+  
+  /* Mobile Hero Lead Card */
+  .mobile-hero-lead-card {
+    margin-top: 20px;
+    padding: 18px 14px;
+  }
+  .lead-form-row {
+    flex-direction: column;
+  }
+  .lead-submit-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Small Smartphone Optimization */
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 1.02rem;
+  }
+  .brand-tagline {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+  .logo-symbol {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+  .header-actions .btn {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+  .lead-cat-pills {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hero-lead-title {
+    font-size: 1.15rem;
   }
 }

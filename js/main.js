@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPartnerFilters();
   initForms();
   initLifeStageSelector();
+  initMobileLeadEngine();
 });
 
 /* -------------------------------------------------------------
@@ -372,4 +373,105 @@ function initLifeStageSelector() {
       });
     });
   });
+}
+
+/* -------------------------------------------------------------
+ * 9. MOBILE LEAD GENERATION ENGINE
+ * ------------------------------------------------------------- */
+function initMobileLeadEngine() {
+  // 1. Interactive Category Pill Radios
+  const catPills = document.querySelectorAll('.lead-cat-pill');
+  catPills.forEach(pill => {
+    const radio = pill.querySelector('input[type="radio"]');
+    if (!radio) return;
+
+    pill.addEventListener('click', () => {
+      const form = pill.closest('form');
+      if (form) {
+        form.querySelectorAll('.lead-cat-pill').forEach(p => p.classList.remove('active'));
+      }
+      pill.classList.add('active');
+      radio.checked = true;
+    });
+  });
+
+  // 2. Mobile Quick Lead Forms Submission
+  const leadForms = document.querySelectorAll('.mobile-quick-lead-form');
+  leadForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const phoneInput = form.querySelector('input[name="mobileNumber"], input[name="leadMobile"]');
+      const categoryRadio = form.querySelector('input[name="mobileCategory"]:checked, input[name="leadCategory"]:checked');
+      
+      const phone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+      const category = categoryRadio ? categoryRadio.value : 'Insurance Advisory';
+
+      if (phone.length < 10) {
+        alert('Please enter a valid 10-digit mobile number.');
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+
+      // Record lead in browser storage
+      try {
+        const leadRecord = {
+          phone,
+          category,
+          timestamp: new Date().toISOString(),
+          source: form.getAttribute('data-lead-source') || 'mobile_quick_lead'
+        };
+        localStorage.setItem('ganesh_insurance_lead_' + Date.now(), JSON.stringify(leadRecord));
+      } catch (err) {
+        console.warn('Storage unavailable', err);
+      }
+
+      // Build personalized WhatsApp Advisory URL
+      const leadMsg = encodeURIComponent(
+        `Hello Ganesh Insurance,\nI would like to get best quotes and consultation for ${category}.\nMy Mobile Number is: ${phone}.\nPlease connect with me at the earliest.`
+      );
+      const waUrl = `https://wa.me/919934304389?text=${leadMsg}`;
+
+      // Instant UI confirmation inside the card
+      const originalHtml = form.innerHTML;
+      form.innerHTML = `
+        <div style="text-align: center; padding: 18px 10px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px; margin-top: 6px;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: #10B981; color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 22px;">✓</div>
+          <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 6px;">Quote Request Sent!</h4>
+          <p style="color: #CBD5E1; font-size: 0.82rem; line-height: 1.4; margin-bottom: 14px;">
+            Connecting you directly to our Senior Advisor for <strong>${category}</strong> via WhatsApp.
+          </p>
+          <div style="display: flex; gap: 8px; flex-direction: column;">
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%; font-size: 0.84rem; padding: 10px 14px;">
+              Chat on WhatsApp Now
+            </a>
+            <a href="tel:+919934304389" class="btn btn-navy" style="width: 100%; font-size: 0.84rem; padding: 9px 14px;">
+              Direct Call: +91 99343 04389
+            </a>
+          </div>
+        </div>
+      `;
+
+      // Auto-trigger WhatsApp in new tab after 600ms
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 600);
+    });
+  });
+
+  // 3. Floating WhatsApp Notification Pulse on Mobile
+  const waFloating = document.querySelector('.floating-whatsapp-btn');
+  if (waFloating && window.innerWidth <= 768) {
+    setTimeout(() => {
+      const tooltip = waFloating.querySelector('.tooltip');
+      if (tooltip) {
+        tooltip.style.opacity = '1';
+        tooltip.style.transform = 'translateX(0)';
+        setTimeout(() => {
+          tooltip.style.opacity = '';
+          tooltip.style.transform = '';
+        }, 5000);
+      }
+    }, 3500);
+  }
 }
