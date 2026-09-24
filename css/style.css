@@ -564,6 +564,8 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
   transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s ease;
   z-index: 1;
+  display: flex;
+  align-items: center;
 }
 
 .hero-slide.active {
@@ -2496,36 +2498,41 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--gold-400);
   }
 
-  /* Hero Section: Perfectly Balanced View */
+  /* Hero Section: Fully Visible, Immersive & Luxurious */
   .hero-slider-section {
-    min-height: auto;
-    height: auto;
-    padding-top: 24px;
-    padding-bottom: 40px;
+    min-height: 560px;
+    height: 82vh;
+    height: 82svh;
+    display: flex;
+    align-items: center;
+    position: relative;
     overflow: hidden;
+    padding: 0;
   }
   .hero-content-container {
-    padding-top: 16px;
-    padding-bottom: 24px;
+    padding-top: 36px;
+    padding-bottom: 56px;
   }
   .h1-hero {
-    font-size: clamp(1.65rem, 6.5vw, 2.15rem);
-    line-height: 1.22;
+    font-size: clamp(1.75rem, 6.8vw, 2.3rem);
+    line-height: 1.2;
   }
   .hero-description {
-    font-size: 0.92rem;
-    line-height: 1.55;
+    font-size: 0.95rem;
+    line-height: 1.6;
     margin-top: 14px;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
   }
   .hero-cta-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     width: 100%;
   }
   .hero-cta-group .btn {
-    width: 100%;
+    flex: 1 1 140px;
+    padding: 12px 18px;
+    font-size: 0.88rem;
     text-align: center;
     justify-content: center;
   }
@@ -2702,10 +2709,21 @@ h1, h2, h3, h4, h5, h6 {
   .modal-body {
     padding: 16px;
   }
-  .modal-body input,
-  .modal-body select,
-  .modal-body textarea {
-    font-size: 16px; /* Stop iOS Safari auto-zoom */
+  /* Inner Page Hero Header */
+  .page-hero {
+    padding: 54px 0 40px;
+  }
+  .page-hero-title {
+    font-size: clamp(1.8rem, 6.8vw, 2.4rem);
+    margin-bottom: 12px;
+  }
+  .page-hero-desc {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important;
   }
 }
 
