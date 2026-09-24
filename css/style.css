@@ -82,6 +82,9 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -91,6 +94,9 @@ body {
   line-height: 1.65;
   font-weight: 400;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -730,11 +736,19 @@ h1, h2, h3, h4, h5, h6 {
   100% { width: 100%; }
 }
 
+/* --- Quick Lead Section --- */
+.quick-lead-section {
+  background: var(--navy-950);
+  padding: 30px 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
 /* --- Floating Trust Bar --- */
 .floating-trust-bar {
   position: relative;
-  z-index: 30;
-  margin-top: -60px;
+  z-index: 20;
+  margin-top: 24px;
   margin-bottom: 40px;
 }
 
@@ -2412,31 +2426,191 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile Devices: Full Lead-Capture Engine Active */
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .container,
+  .container-narrow {
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
   .top-bar {
     display: none;
   }
+
+  /* Header Optimization: Clean Logo + Hamburger Button */
+  .header-container {
+    padding: 10px 14px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .brand-logo {
+    gap: 8px;
+    max-width: calc(100% - 54px);
+  }
+  .brand-name {
+    font-size: 1.05rem;
+    line-height: 1.1;
+  }
+  .brand-tagline {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .logo-symbol {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+  .logo-symbol svg {
+    width: 18px;
+    height: 18px;
+  }
+  .header-actions {
+    gap: 0;
+  }
   .header-actions .phone-quick-link {
-    display: none;
+    display: none !important;
   }
   .header-actions .btn {
-    font-size: 0.8rem;
-    padding: 7px 12px;
+    display: none !important; /* Hide header button on mobile so hamburger is never pushed off-screen */
   }
+  .mobile-nav-toggle {
+    display: flex !important;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    background: rgba(197, 164, 103, 0.12);
+    border: 1px solid rgba(197, 164, 103, 0.35);
+    color: var(--gold-400);
+  }
+
+  /* Hero Section: Perfectly Balanced View */
   .hero-slider-section {
-    min-height: 75vh;
+    min-height: auto;
+    height: auto;
+    padding-top: 24px;
+    padding-bottom: 40px;
+    overflow: hidden;
   }
   .hero-content-container {
-    padding-top: 50px;
-    padding-bottom: 70px;
+    padding-top: 16px;
+    padding-bottom: 24px;
   }
+  .h1-hero {
+    font-size: clamp(1.65rem, 6.5vw, 2.15rem);
+    line-height: 1.22;
+  }
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: 14px;
+    margin-bottom: 22px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Slide Controls: Hide colliding arrows and cleanly center progress indicators */
+  .slider-nav-arrows {
+    display: none !important;
+  }
+  .slider-progress-indicators {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 12px !important;
+    gap: 6px;
+  }
+  .indicator-bar {
+    width: 28px;
+    height: 3px;
+  }
+  .indicator-bar.active {
+    width: 42px;
+  }
+
+  /* Quick Lead Section & Hero Lead Card */
+  .quick-lead-section {
+    padding: 14px 0 18px;
+  }
+  .mobile-hero-lead-card {
+    margin-top: 0;
+    padding: 18px 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-lead-title {
+    font-size: 1.15rem;
+  }
+  .lead-cat-pills {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lead-cat-pill {
+    width: 100%;
+  }
+  .lead-cat-pill span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+  .lead-form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .lead-phone-input {
+    font-size: 16px; /* Stop iOS auto-zoom */
+  }
+  .lead-submit-action {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-lead-micro-proof {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+    font-size: 0.72rem;
+  }
+
+  /* Floating Trust Bar: Clean stacking with zero overlap */
   .floating-trust-bar {
-    margin-top: -30px;
+    margin-top: 18px !important;
+    margin-bottom: 28px;
   }
   .trust-cards-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
+  .trust-card {
+    padding: 18px 16px;
+  }
+
   .category-cards-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .split-section-grid {
     grid-template-columns: 1fr;
@@ -2448,21 +2622,24 @@ h1, h2, h3, h4, h5, h6 {
   .feature-cards-grid-4,
   .process-grid-4 {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
   .partner-cards-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
   .testimonials-grid-3 {
     grid-template-columns: 1fr;
   }
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
   .form-group-grid {
     grid-template-columns: 1fr;
   }
   .contact-card-form {
-    padding: 22px 18px;
+    padding: 22px 16px;
   }
   .footer-top-grid {
     grid-template-columns: 1fr;
@@ -2474,17 +2651,11 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
   }
   body {
-    padding-bottom: 72px;
+    padding-bottom: 76px;
   }
+  /* Hide the round floating button on mobile to prevent blocking screen content */
   .floating-whatsapp-btn {
-    bottom: 76px;
-    right: 14px;
-    width: 48px;
-    height: 48px;
-  }
-  .floating-whatsapp-btn svg {
-    width: 28px;
-    height: 28px;
+    display: none !important;
   }
   
   /* Mobile In-Content Lead Strip */
@@ -2493,11 +2664,14 @@ h1, h2, h3, h4, h5, h6 {
     align-items: stretch;
     text-align: center;
     padding: 20px 16px;
+    margin: 28px auto;
   }
   .mobile-lead-strip-content {
     flex-direction: column;
     text-align: center;
     gap: 12px;
+    min-width: 0;
+    width: 100%;
   }
   .strip-actions {
     justify-content: center;
@@ -2507,44 +2681,60 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
     text-align: center;
   }
-  
-  /* Mobile Hero Lead Card */
-  .mobile-hero-lead-card {
-    margin-top: 20px;
-    padding: 18px 14px;
+
+  /* Modal Optimization on Mobile */
+  .modal-backdrop {
+    padding: 10px;
   }
-  .lead-form-row {
-    flex-direction: column;
-  }
-  .lead-submit-action {
+  .modal-dialog {
     width: 100%;
-    justify-content: center;
+    max-width: 100%;
+    margin: 0;
+    max-height: 92vh;
+    border-radius: var(--radius-lg);
+  }
+  .modal-header {
+    padding: 18px 16px 12px;
+  }
+  .modal-title {
+    font-size: 1.25rem;
+  }
+  .modal-body {
+    padding: 16px;
+  }
+  .modal-body input,
+  .modal-body select,
+  .modal-body textarea {
+    font-size: 16px; /* Stop iOS Safari auto-zoom */
   }
 }
 
 /* Small Smartphone Optimization */
 @media (max-width: 480px) {
-  .brand-name {
-    font-size: 1.02rem;
-  }
-  .brand-tagline {
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-  }
-  .logo-symbol {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-  }
-  .header-actions .btn {
-    font-size: 0.75rem;
-    padding: 6px 10px;
-  }
-  .lead-cat-pills {
-    flex-direction: column;
+  .brand-logo {
     gap: 6px;
   }
-  .hero-lead-title {
-    font-size: 1.15rem;
+  .brand-name {
+    font-size: 0.98rem;
+  }
+  .brand-tagline {
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+  }
+  .logo-symbol {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+  }
+  .logo-symbol svg {
+    width: 17px;
+    height: 17px;
+  }
+  .h1-hero {
+    font-size: 1.65rem;
+  }
+  .section-spacing {
+    padding-top: 56px;
+    padding-bottom: 56px;
   }
 }
