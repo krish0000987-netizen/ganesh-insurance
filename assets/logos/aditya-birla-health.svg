@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 60" width="250" height="60">
+  <!-- Aditya Birla Health Insurance Logo -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Rising Sun & Health Heart -->
+    <rect width="48" height="48" x="6" y="6" rx="10" fill="#BE1E2D"/>
+    <circle cx="30" cy="30" r="7" fill="#FDB913"/>
+    <path d="M30 16v3m0 22v3M16 30h3m22 0h3m-18-10l2 2m14 14l2 2m-18 0l2-2m14-14l2-2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    <!-- Typography -->
+    <text x="64" y="26" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="14" font-weight="800" fill="#BE1E2D" letter-spacing="-0.2">ADITYA BIRLA</text>
+    <text x="64" y="44" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#008080" letter-spacing="1">HEALTH INSURANCE</text>
+  </g>
+</svg>

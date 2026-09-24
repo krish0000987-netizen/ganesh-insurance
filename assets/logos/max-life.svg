@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Axis Max Life Insurance Logo -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Icon Symbol: Burgundy Chevron / Shield -->
+    <rect width="48" height="48" x="6" y="6" rx="10" fill="#97144D"/>
+    <path d="M20 18l10 14 10-14h-6l-4 6-4-6h-6z" fill="#FFFFFF"/>
+    <path d="M26 34l4 5 4-5h-8z" fill="#00AEEF"/>
+    <!-- Typography -->
+    <text x="64" y="27" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="16" font-weight="800" fill="#97144D" letter-spacing="-0.3">MAX LIFE</text>
+    <text x="64" y="44" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="#0A192F" letter-spacing="1">AXIS PARTNERED</text>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- HDFC ERGO Health Insurance Logo -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Red & Blue HDFC ERGO icon -->
+    <rect width="48" height="48" x="6" y="6" rx="10" fill="#ED1C24"/>
+    <path d="M16 16h13v28H16zm15 0h13v13H31z" fill="#FFFFFF"/>
+    <rect width="13" height="13" x="31" y="31" fill="#004C8F"/>
+    <!-- Typography -->
+    <text x="64" y="27" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="16" font-weight="800" fill="#004C8F" letter-spacing="-0.3">HDFC ERGO</text>
+    <text x="64" y="44" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#ED1C24" letter-spacing="1">HEALTH INSURANCE</text>
+  </g>
+</svg>

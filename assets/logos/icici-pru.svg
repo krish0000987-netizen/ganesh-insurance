@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- ICICI Prudential Life Insurance Logo -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Brand Mark Icon: ICICI corporate symbol -->
+    <rect width="48" height="48" x="6" y="6" rx="10" fill="#931820"/>
+    <path d="M23 15h14v5.5H30v19h-7V15z" fill="#FFFFFF"/>
+    <circle cx="36" cy="34" r="5" fill="#F47920"/>
+    <!-- Brand Name Typography -->
+    <text x="64" y="27" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="15" font-weight="800" fill="#931820" letter-spacing="-0.3">ICICI PRUDENTIAL</text>
+    <text x="64" y="44" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="#0A192F" letter-spacing="1">LIFE INSURANCE</text>
+  </g>
+</svg>

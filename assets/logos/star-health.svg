@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Star Health and Allied Insurance Logo -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Blue/Gold Star Icon -->
+    <rect width="48" height="48" x="6" y="6" rx="10" fill="#0C2340"/>
+    <path d="M30 14l3.5 10.5h11l-9 6.5 3.5 11-9-7-9 7 3.5-11-9-6.5h11z" fill="#EAAA00"/>
+    <!-- Typography -->
+    <text x="64" y="27" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="16" font-weight="800" fill="#0C2340" letter-spacing="-0.3">STAR HEALTH</text>
+    <text x="64" y="44" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="10.5" font-weight="600" fill="#EAAA00" letter-spacing="1">INSURANCE THAT CARES</text>
+  </g>
+</svg>

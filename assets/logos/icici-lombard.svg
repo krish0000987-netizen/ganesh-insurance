@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- ICICI Lombard General Insurance Logo -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Maroon Box with Orange Accent -->
+    <rect width="48" height="48" x="6" y="6" rx="10" fill="#931820"/>
+    <path d="M20 16h8v28h16v-8h-8V16H20z" fill="#FFFFFF"/>
+    <circle cx="38" cy="22" r="4.5" fill="#F47920"/>
+    <!-- Typography -->
+    <text x="64" y="27" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="15" font-weight="800" fill="#931820" letter-spacing="-0.3">ICICI LOMBARD</text>
+    <text x="64" y="44" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="#0A192F" letter-spacing="1">GENERAL INSURANCE</text>
+  </g>
+</svg>
